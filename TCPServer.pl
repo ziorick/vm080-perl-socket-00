@@ -21,13 +21,15 @@ while(1) {
    $peer_address = $client_socket->peerhost();
    $peer_port = $client_socket->peerport();
 
-   print "Accepted new client connection from: $peer_address, peer_port\n";
+   print "Accepted new client connection from: $peer_address, $peer_port\n";
 
    $data = "Data from server";
    print $client_socket "$data\n";
 
    $data = <$client_socket>;
    print "Received from client: $data\n";
+
+  $client_socket->close();
 }
 
 $socket->close();
